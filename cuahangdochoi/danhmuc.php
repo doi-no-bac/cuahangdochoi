@@ -8,6 +8,13 @@
     
 
     <style>
+              .banner {
+            padding: 150px;
+            background-image: url("img/bn.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
    
   a {
   text-decoration: none;
@@ -48,12 +55,10 @@ footer {
                 <td><a href="hangmoi.php">HÀNG MỚI</a></td>
                 <td><a href="danhmuc.php">DANH MỤC</a></td>
                 <td><a href="sanpham.php">SẢN PHẨM</a></td>
-                <td><a href="bo-ca-sau-lego.php">CÁ SẤU LEGO</a></td>
-                <td><a href="cua-hang-do-choi-lego.php">CỬA HÀNG LEGO</a></td>
-                <td><a href="bo-lego-khac.php">BỘ LEGO KHÁC</a></td>
+             
             </tr>
         </table>
-    </div>
+    </div><br>
 </header>
     <hr />
 <br>
@@ -61,7 +66,14 @@ footer {
     
 
 <main>
-
+<table align="center" style="text-align: center">
+            <tr>
+                <td><h3><a href="index.php">Sản Phẩm Nổi Bật</a></h3></td>
+                <td><h3><a href="hangmoi.php">Sản Phẩm Mới</a></h3></td>
+     
+             
+            </tr>
+        </table>
 
     
 </main>
@@ -69,19 +81,16 @@ footer {
 
 
 
-    <footer>
-        <table class="tb-footer">
-            <tr><td>
-LIÊN HỆ VỚI CHÚNG TÔI<br>
-         Facebool: <a href="">luckyboy</a><br>
-
-         E-mail:  <a href="">luckyboy</a><br>
-
-         Call: 9999999999
-        </td>
-        <td style="text-align: right;"><a class="a-footer" href="danhmuc.html" style="color: white; text-align: right;"> Quay lại đầu trang</a></td>
-        </tr>
-        </table>
-    </footer>
+<footer>
+    <div>
+        LIÊN HỆ VỚI CHÚNG TÔI<br>
+        Facebool: <a href="">luckyboy</a><br>
+        E-mail: <a href="">luckyboy</a><br>
+        Call: 9999999999
+    </div>
+    <div style="text-align: right;">
+        <a class="a-footer" href="danhmucdanhmuc.php" style="color: white;"> Quay lại đầu trang</a>
+    </div>
+</footer>
   </body>
 </html>

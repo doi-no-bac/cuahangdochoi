@@ -7,36 +7,33 @@ $database = 'cuahangdochoi';
 $conn = mysqli_connect($hostname, $username, $password, $database);
 
 if (!$conn) {
-    echo "Kết nối thất bại: " . mysqli_connect_error();
-    exit;
+    die("Kết nối thất bại: " . mysqli_connect_error());
 }
 
 if (isset($_POST['delivered'])) {
-    $id = $_POST['id'];
-    $sql = "UPDATE donhang SET trangthai = 'Đã giao' WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
-
-    if (mysqli_stmt_execute($stmt)) {
-        header("Location: quanly-donhang.php"); // Chuyển hướng về trang danh sách đơn hàng
-        exit;
+    $sdt = $_POST['sdt']; // Thay 'madonhang' bằng 'sdt'
+    $sql = "UPDATE donhang SET trangthai = 'Đã giao' WHERE sdt = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $sdt); // Giữ nguyên 's' vì sdt thường là kiểu string
+    if ($stmt->execute()) {
+        echo "<script>alert('Cập nhật trạng thái thành Đã giao!'); window.location.href='quanly-donhang.php';</script>";
     } else {
-        echo "Lỗi cập nhật: " . mysqli_error($conn);
+        echo "<script>alert('Lỗi cập nhật trạng thái: " . $stmt->error . "'); window.location.href='quanly-donhang.php';</script>";
     }
-    mysqli_stmt_close($stmt);
-} elseif (isset($_POST['cancelled'])) {
-    $id = $_POST['id'];
-    $sql = "UPDATE donhang SET trangthai = 'Đã hủy' WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    $stmt->close();
+}
 
-    if (mysqli_stmt_execute($stmt)) {
-        header("Location: quanly-donhang.php"); // Chuyển hướng về trang danh sách đơn hàng
-        exit;
+if (isset($_POST['cancelled'])) {
+    $sdt = $_POST['sdt']; // Thay 'madonhang' bằng 'sdt'
+    $sql = "UPDATE donhang SET trangthai = 'Đã hủy' WHERE sdt = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $sdt); // Giữ nguyên 's' vì sdt thường là kiểu string
+    if ($stmt->execute()) {
+        echo "<script>alert('Cập nhật trạng thái thành Đã hủy!'); window.location.href='quanly-donhang.php';</script>";
     } else {
-        echo "Lỗi cập nhật: " . mysqli_error($conn);
+        echo "<script>alert('Lỗi cập nhật trạng thái: " . $stmt->error . "'); window.location.href='quanly-donhang.php';</script>";
     }
-    mysqli_stmt_close($stmt);
+    $stmt->close();
 }
 
 mysqli_close($conn);
